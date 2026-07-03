@@ -12,6 +12,8 @@
 ├── style.css
 ├── script.js
 ├── README.md
+├── assets
+│   └── magazine-backdrop.jpg
 └── docs
     ├── magazine-settings.md
     ├── implementation-summary.md
@@ -36,6 +38,7 @@
 ## CSS Structure
 
 - Mobile-first layout with iPhone width as the main target
+- Generated magazine-style background image layered under readable typography
 - Shared magazine labels and buttons
 - Dedicated styles for home cover, mood selection, and result cover
 - Result theme classes for subtle cover color changes

@@ -12,22 +12,24 @@
 </head>
 <body>
   <main class="app-shell" aria-live="polite">
-    <section id="home-screen" class="screen home-screen magazine-cover">
-      <div class="home-topline">
-        <span id="home-date">Today&apos;s Issue</span>
-        <span>Private Cover</span>
-      </div>
-      <h1 class="logo" aria-label="HER MAGAZINE">
-        <span>HER</span>
-        <span>MAGAZINE</span>
-      </h1>
-      <p class="subtitle">今日のヒロイン診断</p>
-      <div class="home-cover-lines">
-        <p>今日の気分でめくる、あなた専用の1ページ。</p>
-        <p>主役感、透明感、かわいい余韻をそのまま表紙に。</p>
-      </div>
-      <p class="lead">今日もあなたが主役です。</p>
-      <button id="start-button" class="primary-button" type="button">START</button>
+    <section id="home-screen" class="screen home-screen">
+      <article class="home-cover magazine-cover">
+        <div class="home-topline">
+          <span id="home-date">Today&apos;s Issue</span>
+          <span>Private Cover</span>
+        </div>
+        <h1 class="logo" aria-label="HER MAGAZINE">
+          <span>HER</span>
+          <span>MAGAZINE</span>
+        </h1>
+        <p class="subtitle">今日のヒロイン診断</p>
+        <div class="home-cover-lines">
+          <p>今日の気分でめくる、あなた専用の1ページ。</p>
+          <p>主役感、透明感、かわいい余韻をそのまま表紙に。</p>
+        </div>
+        <p class="lead">今日もあなたが主役です。</p>
+        <button id="start-button" class="primary-button" type="button">START</button>
+      </article>
     </section>
 
     <section id="mood-screen" class="screen mood-screen" hidden>
@@ -51,6 +53,11 @@
           <p class="cover-kicker">Today&apos;s Heroine Type</p>
           <h3 id="result-title" class="result-title"></h3>
           <p id="result-catchphrase" class="catchphrase"></p>
+        </div>
+
+        <div class="cover-stories" aria-label="今日の表紙トピック">
+          <p><span>Beauty Note</span> そのままで絵になる日</p>
+          <p><span>Style Mood</span> 余白までかわいい</p>
         </div>
 
         <div class="feature-box">

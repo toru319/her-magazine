@@ -16,6 +16,8 @@
 ├── style.css
 ├── script.js
 ├── README.md
+├── assets
+│   └── magazine-backdrop.jpg
 └── docs
     ├── magazine-settings.md
     ├── implementation-summary.md

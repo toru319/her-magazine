@@ -11,6 +11,7 @@
   --line: rgba(47, 45, 49, 0.16);
   --soft-line: rgba(189, 116, 136, 0.28);
   --shadow: 0 18px 45px rgba(111, 76, 83, 0.16);
+  --cover-image: url("assets/magazine-backdrop.jpg");
 }
 
 * {
@@ -32,7 +33,7 @@ body {
   color: var(--ink);
   font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    linear-gradient(180deg, rgba(255, 250, 247, 0.96), rgba(247, 232, 234, 0.96)),
+    linear-gradient(180deg, rgba(255, 250, 247, 0.94), rgba(247, 232, 234, 0.96)),
     var(--shell);
   overflow-x: hidden;
 }
@@ -62,8 +63,26 @@ button {
   min-height: calc(100svh - 24px);
 }
 
-.home-screen,
 .mood-screen {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-screen {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-cover {
+  width: 100%;
+  min-height: calc(100vh - 24px);
+  min-height: calc(100svh - 24px);
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -79,7 +98,11 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.86);
   border-radius: 8px;
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(255, 246, 241, 0.92)),
+    radial-gradient(circle at 50% 43%, rgba(255, 255, 255, 0.78) 0 27%, rgba(255, 255, 255, 0.52) 48%, rgba(255, 255, 255, 0.2) 78%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 248, 245, 0.28) 52%, rgba(255, 255, 255, 0.58)),
+    linear-gradient(90deg, rgba(189, 116, 136, 0.12), transparent 18%, transparent 82%, rgba(197, 164, 106, 0.11)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 250, 247, 0.72)),
+    var(--cover-image) center / cover no-repeat,
     var(--cover-bg, var(--paper));
   box-shadow: var(--shadow);
 }
@@ -106,6 +129,7 @@ button {
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .issue-label,
@@ -132,7 +156,8 @@ button {
 
 .logo {
   margin-top: 34px;
-  font-size: 3.42rem;
+  font-size: 3.28rem;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.64);
 }
 
 .logo span {
@@ -162,6 +187,7 @@ button {
   font-weight: 700;
   line-height: 1.58;
   text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.68);
 }
 
 .home-cover-lines p,
@@ -228,26 +254,30 @@ button {
   font-size: 1.36rem;
   line-height: 1.36;
   text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .mood-list {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 9px;
 }
 
 .mood-button {
-  min-height: 48px;
+  min-height: 46px;
   border-radius: 8px;
-  padding: 9px 10px;
+  padding: 8px 14px;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--soft-line);
   box-shadow: 0 10px 24px rgba(111, 76, 83, 0.08);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.35;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .result-screen {
@@ -260,15 +290,10 @@ button {
 .cover {
   width: 100%;
   min-height: calc(100svh - 82px);
-  padding: 18px 16px 16px;
+  padding: 18px 16px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.cover > * {
-  position: relative;
-  z-index: 1;
 }
 
 .cover-header {
@@ -277,7 +302,9 @@ button {
 
 .cover-logo {
   margin-top: 12px;
-  font-size: 2.92rem;
+  font-size: 2.68rem;
+  color: rgba(47, 45, 49, 0.96);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.72);
 }
 
 .cover-subtitle {
@@ -294,20 +321,30 @@ button {
 }
 
 .cover-main {
-  margin: 20px 0 16px;
+  margin: 18px 0 12px;
   text-align: center;
 }
 
 .result-title {
   margin: 7px auto 0;
-  max-width: 9.5em;
+  width: 100%;
+  max-width: 100%;
   color: var(--cover-accent, var(--rose));
   font-family: "Noto Serif JP", serif;
-  font-size: 1.78rem;
-  line-height: 1.22;
-  text-wrap: balance;
+  font-size: 1.68rem;
+  line-height: 1.16;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  line-break: strict;
+}
+
+.result-title span {
+  display: block;
+  white-space: nowrap;
+}
+
+.result-title .title-line-soft {
+  font-size: 0.92em;
 }
 
 .catchphrase {
@@ -317,6 +354,8 @@ button {
   font-size: 0.98rem;
   line-height: 1.6;
   text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .catchphrase::before,
@@ -337,10 +376,41 @@ button {
   margin-left: 0.1em;
 }
 
+.cover-stories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.cover-stories p {
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 9px;
+  border-top: 1px solid rgba(197, 164, 106, 0.36);
+  border-bottom: 1px solid rgba(197, 164, 106, 0.22);
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cover-stories span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--cover-accent, var(--rose));
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
 .feature-box {
-  padding: 14px 0;
+  padding: 12px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .feature-label {
@@ -353,16 +423,18 @@ button {
 .feature-box h4 {
   margin: 6px 0 8px;
   font-family: "Noto Serif JP", serif;
-  font-size: 1rem;
+  font-size: 0.98rem;
   line-height: 1.42;
   text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .feature-box p:last-child {
   margin: 0;
   color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.72;
+  font-size: 0.84rem;
+  line-height: 1.66;
   text-align: left;
 }
 
@@ -375,13 +447,31 @@ button {
 
 .colors,
 .lucky-item {
-  margin: 5px 0 0;
+  margin: 6px 0 0;
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   line-height: 1.45;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+}
+
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.color-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 9px;
+  border: 1px solid rgba(197, 164, 106, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
 }
 
 .lucky-box {
@@ -403,6 +493,8 @@ button {
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.42;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .theme-pure {
@@ -449,11 +541,20 @@ button {
   .mood-screen {
     min-height: calc(100vh - 20px);
     min-height: calc(100svh - 20px);
+  }
+
+  .mood-screen {
+    padding: 22px 14px;
+  }
+
+  .home-cover {
+    min-height: calc(100vh - 20px);
+    min-height: calc(100svh - 20px);
     padding: 22px 14px;
   }
 
   .logo {
-    font-size: 3.05rem;
+    font-size: 2.86rem;
   }
 
   .home-cover-lines {
@@ -465,9 +566,9 @@ button {
   }
 
   .mood-button {
-    min-height: 46px;
-    padding: 8px;
-    font-size: 0.84rem;
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 0.88rem;
   }
 
   .cover {
@@ -476,11 +577,11 @@ button {
   }
 
   .cover-logo {
-    font-size: 2.54rem;
+    font-size: 2.32rem;
   }
 
   .result-title {
-    font-size: 1.54rem;
+    font-size: 1.44rem;
   }
 
   .catchphrase {
@@ -488,15 +589,15 @@ button {
   }
 
   .feature-box p:last-child {
-    font-size: 0.84rem;
-    line-height: 1.62;
+    font-size: 0.8rem;
+    line-height: 1.58;
   }
 }
 
 @media (min-height: 780px) {
-  .home-screen {
-    padding-top: 34px;
-    padding-bottom: 34px;
+  .home-cover {
+    padding-top: 26px;
+    padding-bottom: 26px;
   }
 
   .cover-main {

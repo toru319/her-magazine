@@ -387,6 +387,30 @@ const results = [
   }
 ];
 
+const titleLineMap = {
+  2: ["清楚系", "ランウェイヒロイン"],
+  3: ["カフェで", "視線を集めるミューズ"],
+  7: ["ナチュラル可愛い", "主人公"],
+  8: ["きらめきアイドル", "ヒロイン"],
+  9: ["雨の日の", "映画ヒロイン"],
+  11: ["夢見る", "バレリーナガール"],
+  12: ["愛され", "クラシックガール"],
+  15: ["韓国ドラマの", "主人公"],
+  16: ["休日の", "ゆるかわミューズ"],
+  17: ["夜景が似合う", "大人ヒロイン"],
+  19: ["香水みたいな", "余韻ガール"],
+  20: ["まっしろ天使", "プリンセス"],
+  21: ["原宿", "スイートガール"],
+  22: ["美術館で映える", "ミューズ"],
+  24: ["透明感アイドルの", "休日"],
+  25: ["ピンクオーラの", "愛されガール"],
+  26: ["クールビューティー", "ミューズ"],
+  27: ["朝の光の", "ヒロイン"],
+  28: ["ぬくもり", "ラテガール"],
+  29: ["特別な日の", "カバーガール"],
+  30: ["何もしない日の", "姫"]
+};
+
 const screens = {
   home: document.querySelector("#home-screen"),
   mood: document.querySelector("#mood-screen"),
@@ -458,13 +482,43 @@ function renderResult(result, luckyItem) {
   cover.className = `cover ${result.themeClass}`;
   resultDate.textContent = formatToday();
   resultSubtitle.textContent = result.subtitle;
-  resultTitle.textContent = result.title;
+  renderTitle(result);
   resultCatchphrase.textContent = result.catchphrase;
   resultFeatureTitle.textContent = result.featureTitle;
   resultBody.textContent = result.body;
-  resultColors.textContent = result.colors;
+  renderColors(result.colors);
   resultLuckyItem.textContent = luckyItem;
   resultPraise.textContent = result.praise;
+}
+
+function renderTitle(result) {
+  const lines = titleLineMap[result.id] || [result.title];
+  resultTitle.replaceChildren();
+
+  lines.forEach((line, index) => {
+    const span = document.createElement("span");
+    span.textContent = line;
+    if (index > 0 && line.length >= 8) {
+      span.className = "title-line-soft";
+    }
+    resultTitle.appendChild(span);
+  });
+}
+
+function renderColors(colors) {
+  const fragment = document.createDocumentFragment();
+  const wrapper = document.createElement("span");
+  wrapper.className = "color-list";
+
+  colors.split(" / ").forEach((color) => {
+    const chip = document.createElement("span");
+    chip.className = "color-chip";
+    chip.textContent = color;
+    wrapper.appendChild(chip);
+  });
+
+  fragment.appendChild(wrapper);
+  resultColors.replaceChildren(fragment);
 }
 
 homeDate.textContent = formatToday();
