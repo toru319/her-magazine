@@ -411,6 +411,16 @@ const titleLineMap = {
   30: ["何もしない日の", "姫"]
 };
 
+const storyLinesByTheme = {
+  "theme-pure": ["透明感ふわり", "白っぽ上品", "淡色小物の日"],
+  "theme-sweet": ["甘い余韻", "ピンク気分", "リボンひとつ"],
+  "theme-mode": ["静かな存在感", "大人カラー", "細アクセの日"],
+  "theme-latte": ["自然体で絵に", "ラテ色ムード", "バッグも主役"],
+  "theme-lavender": ["休む日も主役", "淡ラベンダー", "ふわ素材の日"],
+  "theme-sun": ["笑顔きらめく", "明るい色を", "軽い足元で"],
+  "theme-night": ["余白が光る", "深めカラー", "光る小物を"]
+};
+
 const screens = {
   home: document.querySelector("#home-screen"),
   mood: document.querySelector("#mood-screen"),
@@ -429,6 +439,9 @@ const resultBody = document.querySelector("#result-body");
 const resultColors = document.querySelector("#result-colors");
 const resultLuckyItem = document.querySelector("#result-lucky-item");
 const resultPraise = document.querySelector("#result-praise");
+const storyBeauty = document.querySelector("#story-beauty");
+const storyStyle = document.querySelector("#story-style");
+const storyCloset = document.querySelector("#story-closet");
 
 document.querySelector("#start-button").addEventListener("click", () => {
   showScreen("mood");
@@ -489,6 +502,7 @@ function renderResult(result, luckyItem) {
   renderColors(result.colors);
   resultLuckyItem.textContent = luckyItem;
   resultPraise.textContent = result.praise;
+  renderStoryLines(result);
 }
 
 function renderTitle(result) {
@@ -519,6 +533,13 @@ function renderColors(colors) {
 
   fragment.appendChild(wrapper);
   resultColors.replaceChildren(fragment);
+}
+
+function renderStoryLines(result) {
+  const [beauty, style, closet] = storyLinesByTheme[result.themeClass] || storyLinesByTheme["theme-sweet"];
+  storyBeauty.textContent = beauty;
+  storyStyle.textContent = style;
+  storyCloset.textContent = closet;
 }
 
 homeDate.textContent = formatToday();
