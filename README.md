@@ -19,6 +19,7 @@
 ├── assets
 │   └── magazine-backdrop.jpg
 └── docs
+    ├── design-research.md
     ├── magazine-settings.md
     ├── implementation-summary.md
     └── implementation-structure.md
@@ -46,6 +47,8 @@
 - 気分カテゴリごとのランダム表示
 - 今日の日付表示
 - 気分カテゴリごとのラッキーアイテム表示
+- 雑誌表紙風のサイドコピー、カバーライン、号数・バーコード風表示
+- 生成背景画像を使った淡い表紙テクスチャ
 - 再診断ボタン
 
 写真選択、画像保存、SNS投稿、ログイン、通知、診断履歴は含めていません。
