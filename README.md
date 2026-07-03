@@ -8,6 +8,10 @@
 
 ```text
 .
+├── .github
+│   └── workflows
+│       └── pages.yml
+├── .nojekyll
 ├── index.html
 ├── style.css
 ├── script.js
@@ -24,9 +28,11 @@
 
 ## GitHub Pages
 
-1. このフォルダの4ファイルをGitHubリポジトリに置きます。
-2. GitHubの `Settings` → `Pages` を開きます。
-3. `Deploy from a branch` を選び、公開するブランチとフォルダを指定します。
+このリポジトリには `.github/workflows/pages.yml` があり、`main` に反映されるとGitHub Actionsで静的ファイルをGitHub Pagesへデプロイします。
+
+1. GitHubの `Settings` → `Pages` を開きます。
+2. `Build and deployment` の `Source` を `GitHub Actions` にします。
+3. `Actions` タブで `Deploy static site to GitHub Pages` が成功していることを確認します。
 4. 表示されたURLをスマホで開くと使えます。
 
 ## MVP Scope
