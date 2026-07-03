@@ -17,18 +17,24 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 [hidden] {
   display: none !important;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0;
   color: var(--text);
   font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
     linear-gradient(135deg, rgba(252, 238, 239, 0.94), rgba(255, 248, 240, 0.98)),
     var(--blush);
+  overflow-x: hidden;
 }
 
 button {
@@ -38,8 +44,9 @@ button {
 .app-shell {
   width: min(100%, 420px);
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
-  padding: 28px 20px;
+  padding: 20px 16px;
   display: grid;
   place-items: center;
 }
@@ -51,7 +58,8 @@ button {
 .home-screen,
 .mood-screen {
   min-height: calc(100vh - 56px);
-  padding: 44px 24px;
+  min-height: calc(100svh - 40px);
+  padding: 34px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +98,7 @@ button {
 
 .logo {
   max-width: 9ch;
-  font-size: 5.8rem;
+  font-size: 4.65rem;
 }
 
 .subtitle {
@@ -102,7 +110,7 @@ button {
 }
 
 .lead {
-  margin: 12px 0 34px;
+  margin: 12px 0 28px;
   color: var(--muted);
   font-size: 1rem;
 }
@@ -177,12 +185,13 @@ button {
 }
 
 .result-screen {
-  padding: 12px 0 24px;
+  padding: 0 0 20px;
 }
 
 .cover {
-  min-height: 680px;
-  padding: 24px 22px 22px;
+  width: 100%;
+  min-height: 0;
+  padding: 22px 18px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -204,15 +213,15 @@ button {
 }
 
 .cover::before {
-  inset: 14px;
+  inset: 12px;
   border: 1px solid rgba(200, 169, 106, 0.36);
 }
 
 .cover::after {
-  width: 170px;
-  height: 170px;
-  right: -68px;
-  top: 170px;
+  width: 130px;
+  height: 130px;
+  right: -54px;
+  top: 150px;
   border: 1px solid rgba(217, 165, 179, 0.22);
   border-radius: 50%;
 }
@@ -227,7 +236,7 @@ button {
 }
 
 .cover-logo {
-  font-size: 4.2rem;
+  font-size: 3.25rem;
 }
 
 .cover-subtitle {
@@ -243,24 +252,24 @@ button {
 }
 
 .cover-main {
-  margin: 38px 0 28px;
+  margin: 30px 0 22px;
   text-align: center;
 }
 
 .result-title {
   margin: 10px auto 0;
-  max-width: 9em;
+  max-width: 8em;
   font-family: "Noto Serif JP", serif;
-  font-size: 2.75rem;
+  font-size: 2.15rem;
   line-height: 1.18;
   color: var(--cover-accent, var(--rose-deep));
 }
 
 .catchphrase {
-  margin: 20px auto 0;
+  margin: 16px auto 0;
   max-width: 15em;
   font-family: "Noto Serif JP", serif;
-  font-size: 1.2rem;
+  font-size: 1.08rem;
   line-height: 1.7;
 }
 
@@ -283,7 +292,7 @@ button {
 }
 
 .feature-box {
-  padding: 20px 18px;
+  padding: 18px 14px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.38);
@@ -298,7 +307,7 @@ button {
 .feature-box h4 {
   margin: 8px 0 12px;
   font-family: "Noto Serif JP", serif;
-  font-size: 1.18rem;
+  font-size: 1.08rem;
   line-height: 1.45;
 }
 
@@ -312,8 +321,8 @@ button {
 
 .cover-footer {
   display: grid;
-  gap: 18px;
-  margin-top: 24px;
+  gap: 14px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -373,33 +382,88 @@ button {
 
 @media (max-width: 360px) {
   .app-shell {
-    padding: 18px 14px;
+    padding: 16px 12px;
   }
 
   .home-screen,
   .mood-screen {
-    min-height: calc(100vh - 36px);
-    padding: 34px 18px;
+    min-height: calc(100vh - 32px);
+    min-height: calc(100svh - 32px);
+    padding: 28px 14px;
   }
 
   .cover {
-    min-height: 650px;
-    padding: 22px 18px 20px;
+    padding: 20px 14px 18px;
   }
 
   .logo {
-    font-size: 4.7rem;
+    font-size: 4rem;
   }
 
   .cover-logo {
-    font-size: 3.35rem;
+    font-size: 2.8rem;
   }
 
   .result-title {
-    font-size: 2.25rem;
+    font-size: 1.9rem;
   }
 
   .feature-box {
-    padding: 18px 14px;
+    padding: 16px 12px;
+  }
+}
+
+@media (min-width: 390px) {
+  .app-shell {
+    padding: 28px 20px;
+  }
+
+  .home-screen,
+  .mood-screen {
+    min-height: calc(100vh - 56px);
+    min-height: calc(100svh - 56px);
+    padding: 44px 24px;
+  }
+
+  .logo {
+    font-size: 5.35rem;
+  }
+
+  .cover {
+    min-height: 640px;
+    padding: 24px 22px 22px;
+  }
+
+  .cover::before {
+    inset: 14px;
+  }
+
+  .cover::after {
+    width: 170px;
+    height: 170px;
+    right: -68px;
+    top: 170px;
+  }
+
+  .cover-logo {
+    font-size: 3.85rem;
+  }
+
+  .cover-main {
+    margin: 34px 0 26px;
+  }
+
+  .result-title {
+    font-size: 2.45rem;
+  }
+
+  .catchphrase {
+    font-size: 1.16rem;
+  }
+}
+
+@media (min-height: 780px) and (min-width: 390px) {
+  .cover {
+    min-height: 680px;
   }
 }
