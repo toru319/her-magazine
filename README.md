@@ -11,7 +11,11 @@
 ├── index.html
 ├── style.css
 ├── script.js
-└── README.md
+├── README.md
+└── docs
+    ├── magazine-settings.md
+    ├── implementation-summary.md
+    └── implementation-structure.md
 ```
 
 ## How to Use
@@ -32,6 +36,8 @@
 - 雑誌風診断結果画面
 - 30種類の診断データ
 - 気分カテゴリごとのランダム表示
+- 今日の日付表示
+- 気分カテゴリごとのラッキーアイテム表示
 - 再診断ボタン
 
 写真選択、画像保存、SNS投稿、ログイン、通知、診断履歴は含めていません。
