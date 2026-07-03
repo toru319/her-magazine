@@ -15,6 +15,7 @@
 ├── assets
 │   └── magazine-backdrop.jpg
 └── docs
+    ├── design-research.md
     ├── magazine-settings.md
     ├── implementation-summary.md
     └── implementation-structure.md
@@ -41,6 +42,7 @@
 - Generated magazine-style background image layered under readable typography
 - Shared magazine labels and buttons
 - Dedicated styles for home cover, mood selection, and result cover
+- Cover-like side copy, issue number, cover lines, price text, and barcode mark
 - Result theme classes for subtle cover color changes
 - Small-width and taller-screen media queries for iPhone variation
 
