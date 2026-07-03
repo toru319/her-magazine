@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="今日の気分から架空ファッション誌の表紙みたいなヒロインタイプを楽しむ、個人用Webアプリ。">
+  <title>HER MAGAZINE | 今日のヒロイン診断</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell" aria-live="polite">
+    <section id="home-screen" class="screen home-screen">
+      <p class="issue-label">Today&apos;s Issue</p>
+      <h1 class="logo">HER MAGAZINE</h1>
+      <p class="subtitle">今日のヒロイン診断</p>
+      <p class="lead">今日もあなたが主役です。</p>
+      <button id="start-button" class="primary-button" type="button">START</button>
+    </section>
+
+    <section id="mood-screen" class="screen mood-screen" hidden>
+      <p class="issue-label">Choose Your Mood</p>
+      <h2>今日の気分を選んでね</h2>
+      <div id="mood-list" class="mood-list" aria-label="今日の気分"></div>
+    </section>
+
+    <section id="result-screen" class="screen result-screen" hidden>
+      <article id="cover" class="cover">
+        <header class="cover-header">
+          <p class="cover-date">Today&apos;s Issue</p>
+          <h2 class="cover-logo">HER MAGAZINE</h2>
+          <p id="result-subtitle" class="cover-subtitle"></p>
+        </header>
+
+        <div class="cover-main">
+          <p class="cover-kicker">Today&apos;s Heroine Type</p>
+          <h3 id="result-title" class="result-title"></h3>
+          <p id="result-catchphrase" class="catchphrase"></p>
+        </div>
+
+        <div class="feature-box">
+          <p class="feature-label">特集</p>
+          <h4 id="result-feature-title"></h4>
+          <p id="result-body"></p>
+        </div>
+
+        <div class="cover-footer">
+          <div>
+            <p class="mini-label">Recommended Colors</p>
+            <p id="result-colors" class="colors"></p>
+          </div>
+          <p id="result-praise" class="praise"></p>
+        </div>
+      </article>
+
+      <button id="retry-button" class="secondary-button" type="button">もう一度診断する</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
