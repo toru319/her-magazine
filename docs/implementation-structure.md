@@ -4,6 +4,10 @@
 
 ```text
 .
+├── .github
+│   └── workflows
+│       └── pages.yml
+├── .nojekyll
 ├── index.html
 ├── style.css
 ├── script.js
@@ -36,3 +40,8 @@
 - Dedicated styles for home cover, mood selection, and result cover
 - Result theme classes for subtle cover color changes
 - Small-width and taller-screen media queries for iPhone variation
+
+## Deployment Structure
+
+- `.github/workflows/pages.yml`: deploys the repository root to GitHub Pages with official Pages Actions
+- `.nojekyll`: disables Jekyll processing for the static site
