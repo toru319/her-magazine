@@ -17,7 +17,7 @@ HER MAGAZINE is a private fashion-magazine-style heroine diagnosis app for iPhon
 - iPhone-first cover layout
 - Large but readable masthead
 - Intentional line breaks only
-- Editorial labels such as `Today's Issue`, `Cover Story`, `Lucky Item`
+- Editorial labels such as `Today's Issue`, `Cover Feature`, `Lucky Item`
 - Soft fashion colors with rose, ivory, champagne, lavender, and muted charcoal
 - Result screen should feel like a magazine cover, with the date and lucky item included in the cover composition
 

@@ -10,9 +10,8 @@
 ## Cover Design Takeaways
 
 - Use a large masthead as the first visual anchor.
-- Add multiple short cover lines, not long explanatory text.
 - Mix Japanese feature text with small English labels.
-- Include issue-like metadata such as issue number, date, price-like text, and barcode-like marks.
+- Include light issue-like metadata such as issue number and date.
 - Use edge decoration and a clean center so the main title remains readable.
 - Keep the tone sweet and personal rather than promotional or achievement-focused.
 
@@ -22,7 +21,7 @@
 - Multiple CSS backgrounds layer generated texture, soft white overlays, and theme colors.
 - `writing-mode` creates vertical side copy similar to magazine side captions.
 - CSS custom properties keep per-result accent themes lightweight.
-- JavaScript updates cover lines based on the selected diagnosis theme.
+- JavaScript keeps the result content focused on the selected diagnosis theme.
 
 ## Sources
 

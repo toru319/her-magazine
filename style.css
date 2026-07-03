@@ -350,7 +350,7 @@ button {
 }
 
 .cover-main {
-  margin: 15px 0 10px;
+  margin: 18px 0 18px;
   text-align: center;
 }
 
@@ -419,43 +419,6 @@ button {
   margin-left: 0.1em;
 }
 
-.cover-stories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
-  margin: 0 0 9px;
-  text-align: left;
-}
-
-.cover-stories p {
-  min-height: 52px;
-  margin: 0;
-  padding: 7px 7px;
-  border-top: 1px solid rgba(197, 164, 106, 0.36);
-  border-bottom: 1px solid rgba(197, 164, 106, 0.22);
-  background: rgba(255, 255, 255, 0.42);
-  color: var(--ink);
-  font-size: 0.68rem;
-  font-weight: 700;
-  line-height: 1.35;
-  word-break: keep-all;
-  overflow-wrap: normal;
-}
-
-.cover-stories span {
-  display: block;
-  margin-bottom: 3px;
-  color: var(--cover-accent, var(--rose));
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 0.62rem;
-  text-transform: uppercase;
-}
-
-.cover-stories b {
-  display: block;
-  font-weight: 700;
-}
-
 .side-copy {
   position: absolute;
   top: 154px;
@@ -515,8 +478,8 @@ button {
 
 .cover-footer {
   display: grid;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 16px;
   text-align: center;
 }
 
@@ -570,46 +533,6 @@ button {
   line-height: 1.42;
   word-break: keep-all;
   overflow-wrap: normal;
-}
-
-.cover-meta {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 10px;
-  color: rgba(47, 45, 49, 0.5);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 0.66rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.barcode {
-  width: 54px;
-  height: 20px;
-  display: block;
-  background:
-    linear-gradient(90deg,
-      #2f2d31 0 2px,
-      transparent 2px 5px,
-      #2f2d31 5px 6px,
-      transparent 6px 9px,
-      #2f2d31 9px 12px,
-      transparent 12px 15px,
-      #2f2d31 15px 16px,
-      transparent 16px 21px,
-      #2f2d31 21px 23px,
-      transparent 23px 26px,
-      #2f2d31 26px 27px,
-      transparent 27px 31px,
-      #2f2d31 31px 35px,
-      transparent 35px 39px,
-      #2f2d31 39px 40px,
-      transparent 40px 44px,
-      #2f2d31 44px 47px,
-      transparent 47px 50px,
-      #2f2d31 50px 54px);
-  opacity: 0.5;
 }
 
 .theme-pure {
