@@ -12,10 +12,20 @@
 </head>
 <body>
   <main class="app-shell" aria-live="polite">
-    <section id="home-screen" class="screen home-screen">
-      <p class="issue-label">Today&apos;s Issue</p>
-      <h1 class="logo">HER MAGAZINE</h1>
+    <section id="home-screen" class="screen home-screen magazine-cover">
+      <div class="home-topline">
+        <span id="home-date">Today&apos;s Issue</span>
+        <span>Private Cover</span>
+      </div>
+      <h1 class="logo" aria-label="HER MAGAZINE">
+        <span>HER</span>
+        <span>MAGAZINE</span>
+      </h1>
       <p class="subtitle">今日のヒロイン診断</p>
+      <div class="home-cover-lines">
+        <p>今日の気分でめくる、あなた専用の1ページ。</p>
+        <p>主役感、透明感、かわいい余韻をそのまま表紙に。</p>
+      </div>
       <p class="lead">今日もあなたが主役です。</p>
       <button id="start-button" class="primary-button" type="button">START</button>
     </section>
@@ -29,7 +39,10 @@
     <section id="result-screen" class="screen result-screen" hidden>
       <article id="cover" class="cover">
         <header class="cover-header">
-          <p class="cover-date">Today&apos;s Issue</p>
+          <div class="result-topline">
+            <span id="result-date">Today&apos;s Issue</span>
+            <span>Cover Story</span>
+          </div>
           <h2 class="cover-logo">HER MAGAZINE</h2>
           <p id="result-subtitle" class="cover-subtitle"></p>
         </header>
@@ -50,6 +63,10 @@
           <div>
             <p class="mini-label">Recommended Colors</p>
             <p id="result-colors" class="colors"></p>
+          </div>
+          <div class="lucky-box">
+            <p class="mini-label">Lucky Item</p>
+            <p id="result-lucky-item" class="lucky-item"></p>
           </div>
           <p id="result-praise" class="praise"></p>
         </div>
