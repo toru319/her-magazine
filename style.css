@@ -1,16 +1,16 @@
 :root {
-  --base: #ffffff;
-  --paper: #fff8f0;
-  --blush: #fceeef;
-  --text: #333333;
-  --muted: #756b6d;
-  --rose: #d9a5b3;
-  --rose-deep: #b9798b;
-  --gold: #c8a96a;
-  --lavender: #f1eaf7;
-  --latte: #f3e7d3;
-  --line: rgba(51, 51, 51, 0.14);
-  --shadow: 0 22px 70px rgba(176, 119, 135, 0.18);
+  --paper: #fffaf7;
+  --shell: #f7e8ea;
+  --ink: #2f2d31;
+  --muted: #756c72;
+  --rose: #bd7488;
+  --rose-soft: #f6dce3;
+  --champagne: #c5a46a;
+  --lilac: #ece4f5;
+  --mint: #dceee8;
+  --line: rgba(47, 45, 49, 0.16);
+  --soft-line: rgba(189, 116, 136, 0.28);
+  --shadow: 0 18px 45px rgba(111, 76, 83, 0.16);
 }
 
 * {
@@ -29,11 +29,11 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   margin: 0;
-  color: var(--text);
+  color: var(--ink);
   font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    linear-gradient(135deg, rgba(252, 238, 239, 0.94), rgba(255, 248, 240, 0.98)),
-    var(--blush);
+    linear-gradient(180deg, rgba(255, 250, 247, 0.96), rgba(247, 232, 234, 0.96)),
+    var(--shell);
   overflow-x: hidden;
 }
 
@@ -42,11 +42,11 @@ button {
 }
 
 .app-shell {
-  width: min(100%, 420px);
+  width: min(100%, 430px);
   min-height: 100vh;
   min-height: 100svh;
   margin: 0 auto;
-  padding: 20px 16px;
+  padding: 12px;
   display: grid;
   place-items: center;
 }
@@ -56,10 +56,15 @@ button {
 }
 
 .home-screen,
+.mood-screen,
+.result-screen {
+  min-height: calc(100vh - 24px);
+  min-height: calc(100svh - 24px);
+}
+
+.home-screen,
 .mood-screen {
-  min-height: calc(100vh - 56px);
-  min-height: calc(100svh - 40px);
-  padding: 34px 18px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,21 +72,49 @@ button {
   text-align: center;
 }
 
-.home-screen {
-  border: 1px solid rgba(255, 255, 255, 0.82);
+.magazine-cover,
+.cover {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.86);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.58);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(255, 246, 241, 0.92)),
+    var(--cover-bg, var(--paper));
   box-shadow: var(--shadow);
 }
 
+.magazine-cover::before,
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  border: 1px solid rgba(197, 164, 106, 0.34);
+}
+
+.home-topline,
+.result-topline {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--rose);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .issue-label,
-.cover-date,
 .cover-kicker,
 .mini-label {
   margin: 0;
-  color: var(--rose-deep);
+  color: var(--rose);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -89,30 +122,57 @@ button {
 
 .logo,
 .cover-logo {
-  margin: 12px 0 0;
+  margin: 0;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 800;
   letter-spacing: 0;
-  line-height: 0.92;
+  line-height: 0.86;
+  text-align: center;
 }
 
 .logo {
-  max-width: 9ch;
-  font-size: 4.65rem;
+  margin-top: 34px;
+  font-size: 3.42rem;
+}
+
+.logo span {
+  display: block;
 }
 
 .subtitle {
-  margin: 22px 0 0;
-  color: var(--rose-deep);
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 9px 0;
+  color: var(--rose);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   font-family: "Noto Serif JP", serif;
-  font-size: 1.12rem;
+  font-size: 1.02rem;
   font-weight: 700;
 }
 
+.home-cover-lines {
+  width: 100%;
+  margin: 26px 0 0;
+  display: grid;
+  gap: 9px;
+  color: var(--ink);
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.58;
+  text-wrap: balance;
+}
+
+.home-cover-lines p,
 .lead {
-  margin: 12px 0 28px;
+  margin: 0;
+}
+
+.lead {
+  margin-top: 22px;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .primary-button,
@@ -120,110 +180,90 @@ button {
 .mood-button {
   border: 0;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
   -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .primary-button,
 .secondary-button {
-  min-height: 52px;
+  min-height: 46px;
   border-radius: 999px;
-  padding: 0 30px;
+  padding: 0 26px;
   font-weight: 700;
 }
 
 .primary-button {
-  min-width: 164px;
+  min-width: 148px;
+  margin-top: 28px;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--rose-deep), var(--gold));
-  box-shadow: 0 14px 34px rgba(185, 121, 139, 0.28);
+  background: linear-gradient(135deg, #b86178, var(--champagne));
+  box-shadow: 0 14px 30px rgba(184, 97, 120, 0.28);
 }
 
 .secondary-button {
   width: 100%;
-  margin-top: 18px;
-  color: var(--rose-deep);
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(185, 121, 139, 0.22);
+  max-width: 360px;
+  margin: 12px auto 0;
+  color: var(--rose);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--soft-line);
 }
 
 .primary-button:hover,
 .secondary-button:hover,
 .mood-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .primary-button:focus-visible,
 .secondary-button:focus-visible,
 .mood-button:focus-visible {
-  outline: 3px solid rgba(200, 169, 106, 0.45);
+  outline: 3px solid rgba(197, 164, 106, 0.42);
   outline-offset: 3px;
 }
 
 .mood-screen h2 {
-  margin: 12px 0 28px;
+  margin: 10px 0 22px;
   font-family: "Noto Serif JP", serif;
-  font-size: 1.7rem;
-  line-height: 1.35;
+  font-size: 1.36rem;
+  line-height: 1.36;
+  text-wrap: balance;
 }
 
 .mood-list {
   width: 100%;
   display: grid;
-  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .mood-button {
-  min-height: 52px;
+  min-height: 48px;
   border-radius: 8px;
-  padding: 12px 16px;
-  color: var(--text);
+  padding: 9px 10px;
+  color: var(--ink);
   background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(217, 165, 179, 0.4);
-  box-shadow: 0 10px 30px rgba(176, 119, 135, 0.1);
+  border: 1px solid var(--soft-line);
+  box-shadow: 0 10px 24px rgba(111, 76, 83, 0.08);
+  font-size: 0.9rem;
   font-weight: 700;
+  line-height: 1.35;
 }
 
 .result-screen {
-  padding: 0 0 20px;
+  padding: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cover {
   width: 100%;
-  min-height: 0;
-  padding: 22px 18px 20px;
+  min-height: calc(100svh - 82px);
+  padding: 18px 16px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 248, 240, 0.9)),
-    var(--cover-bg, var(--paper));
-  box-shadow: var(--shadow);
-}
-
-.cover::before,
-.cover::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.cover::before {
-  inset: 12px;
-  border: 1px solid rgba(200, 169, 106, 0.36);
-}
-
-.cover::after {
-  width: 130px;
-  height: 130px;
-  right: -54px;
-  top: 150px;
-  border: 1px solid rgba(217, 165, 179, 0.22);
-  border-radius: 50%;
 }
 
 .cover > * {
@@ -236,48 +276,54 @@ button {
 }
 
 .cover-logo {
-  font-size: 3.25rem;
+  margin-top: 12px;
+  font-size: 2.92rem;
 }
 
 .cover-subtitle {
   width: fit-content;
   max-width: 100%;
-  margin: 12px auto 0;
-  padding: 7px 14px;
+  margin: 9px auto 0;
+  padding: 5px 12px;
+  color: var(--muted);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  color: var(--muted);
   font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .cover-main {
-  margin: 30px 0 22px;
+  margin: 20px 0 16px;
   text-align: center;
 }
 
 .result-title {
-  margin: 10px auto 0;
-  max-width: 8em;
+  margin: 7px auto 0;
+  max-width: 9.5em;
+  color: var(--cover-accent, var(--rose));
   font-family: "Noto Serif JP", serif;
-  font-size: 2.15rem;
-  line-height: 1.18;
-  color: var(--cover-accent, var(--rose-deep));
+  font-size: 1.78rem;
+  line-height: 1.22;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .catchphrase {
-  margin: 16px auto 0;
-  max-width: 15em;
+  margin: 12px auto 0;
+  max-width: 16em;
   font-family: "Noto Serif JP", serif;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  text-wrap: balance;
 }
 
 .catchphrase::before,
 .catchphrase::after {
-  color: var(--gold);
+  color: var(--champagne);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.4em;
+  font-size: 1.3em;
   line-height: 0;
 }
 
@@ -292,178 +338,174 @@ button {
 }
 
 .feature-box {
-  padding: 18px 14px;
+  padding: 14px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.38);
 }
 
 .feature-label {
   margin: 0;
-  color: var(--cover-accent, var(--rose-deep));
+  color: var(--cover-accent, var(--rose));
+  font-size: 0.84rem;
   font-weight: 700;
 }
 
 .feature-box h4 {
-  margin: 8px 0 12px;
+  margin: 6px 0 8px;
   font-family: "Noto Serif JP", serif;
-  font-size: 1.08rem;
-  line-height: 1.45;
+  font-size: 1rem;
+  line-height: 1.42;
+  text-wrap: balance;
 }
 
 .feature-box p:last-child {
   margin: 0;
   color: var(--muted);
-  font-size: 0.96rem;
-  line-height: 1.9;
+  font-size: 0.88rem;
+  line-height: 1.72;
   text-align: left;
 }
 
 .cover-footer {
   display: grid;
-  gap: 14px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 14px;
   text-align: center;
 }
 
-.colors {
-  margin: 8px 0 0;
-  color: var(--text);
+.colors,
+.lucky-item {
+  margin: 5px 0 0;
+  color: var(--ink);
+  font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.55;
+  line-height: 1.45;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.lucky-box {
+  padding: 10px 0;
+  border-top: 1px solid var(--soft-line);
+  border-bottom: 1px solid var(--soft-line);
 }
 
 .praise {
-  margin: 0;
-  padding: 12px 14px;
-  color: var(--cover-accent, var(--rose-deep));
-  border: 1px solid rgba(217, 165, 179, 0.34);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 8px 14px;
+  color: var(--cover-accent, var(--rose));
+  border: 1px solid var(--soft-line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.54);
   font-family: "Noto Serif JP", serif;
+  font-size: 0.92rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.42;
 }
 
 .theme-pure {
   --cover-bg: #f7fbff;
-  --cover-accent: #8aa9bf;
+  --cover-accent: #7495ad;
 }
 
 .theme-sweet {
   --cover-bg: #fff0f5;
-  --cover-accent: #d987a5;
+  --cover-accent: #cf7899;
 }
 
 .theme-mode {
-  --cover-bg: #f2f0ef;
-  --cover-accent: #4c4a50;
+  --cover-bg: #f4f1ef;
+  --cover-accent: #54515b;
 }
 
 .theme-latte {
   --cover-bg: #f7eddf;
-  --cover-accent: #a67c52;
+  --cover-accent: #9b704a;
 }
 
 .theme-lavender {
-  --cover-bg: #f5effa;
-  --cover-accent: #9a82b6;
+  --cover-bg: #f4eef9;
+  --cover-accent: #9278ad;
 }
 
 .theme-sun {
   --cover-bg: #fff7de;
-  --cover-accent: #d69a45;
+  --cover-accent: #c88a3a;
 }
 
 .theme-night {
-  --cover-bg: #eef0f6;
-  --cover-accent: #5d6685;
+  --cover-bg: #edf0f7;
+  --cover-accent: #59637f;
 }
 
 @media (max-width: 360px) {
   .app-shell {
-    padding: 16px 12px;
+    padding: 10px;
   }
 
   .home-screen,
   .mood-screen {
-    min-height: calc(100vh - 32px);
-    min-height: calc(100svh - 32px);
-    padding: 28px 14px;
-  }
-
-  .cover {
-    padding: 20px 14px 18px;
+    min-height: calc(100vh - 20px);
+    min-height: calc(100svh - 20px);
+    padding: 22px 14px;
   }
 
   .logo {
-    font-size: 4rem;
+    font-size: 3.05rem;
   }
 
-  .cover-logo {
-    font-size: 2.8rem;
+  .home-cover-lines {
+    font-size: 0.88rem;
   }
 
-  .result-title {
-    font-size: 1.9rem;
+  .mood-list {
+    gap: 8px;
   }
 
-  .feature-box {
-    padding: 16px 12px;
-  }
-}
-
-@media (min-width: 390px) {
-  .app-shell {
-    padding: 28px 20px;
-  }
-
-  .home-screen,
-  .mood-screen {
-    min-height: calc(100vh - 56px);
-    min-height: calc(100svh - 56px);
-    padding: 44px 24px;
-  }
-
-  .logo {
-    font-size: 5.35rem;
+  .mood-button {
+    min-height: 46px;
+    padding: 8px;
+    font-size: 0.84rem;
   }
 
   .cover {
-    min-height: 640px;
-    padding: 24px 22px 22px;
-  }
-
-  .cover::before {
-    inset: 14px;
-  }
-
-  .cover::after {
-    width: 170px;
-    height: 170px;
-    right: -68px;
-    top: 170px;
+    min-height: calc(100svh - 78px);
+    padding: 16px 13px 14px;
   }
 
   .cover-logo {
-    font-size: 3.85rem;
-  }
-
-  .cover-main {
-    margin: 34px 0 26px;
+    font-size: 2.54rem;
   }
 
   .result-title {
-    font-size: 2.45rem;
+    font-size: 1.54rem;
   }
 
   .catchphrase {
-    font-size: 1.16rem;
+    font-size: 0.9rem;
+  }
+
+  .feature-box p:last-child {
+    font-size: 0.84rem;
+    line-height: 1.62;
   }
 }
 
-@media (min-height: 780px) and (min-width: 390px) {
-  .cover {
-    min-height: 680px;
+@media (min-height: 780px) {
+  .home-screen {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .cover-main {
+    margin-top: 26px;
+    margin-bottom: 20px;
+  }
+
+  .feature-box {
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 }
