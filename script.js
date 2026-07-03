@@ -11,6 +11,19 @@ const moods = [
   "ちょっと特別な気分"
 ];
 
+const luckyItemsByMood = {
+  "清楚な気分": ["白いハンカチ", "淡いリップ", "細めのリング", "ミルクティー"],
+  "甘めな気分": ["ピンクの小物", "リボンアクセ", "バニラの香り", "クリーム色のポーチ"],
+  "大人っぽい気分": ["シルバーアクセ", "深めカラーのリップ", "黒いミニバッグ", "細い腕時計"],
+  "おしゃれしたい気分": ["お気に入りの靴", "小さなイヤリング", "ツヤ感ヘアオイル", "きれいめバッグ"],
+  "癒されたい": ["あたたかいドリンク", "ふわふわソックス", "好きな香り", "やわらかいブランケット"],
+  "自信がほしい": ["ゴールドアクセ", "お気に入りの香水", "きれいな鏡", "明るい色のリップ"],
+  "元気な気分": ["カラフルな小物", "フルーツドリンク", "白いスニーカー", "明るいネイル"],
+  "静かに過ごしたい": ["文庫本", "小さなノート", "落ち着いた香り", "あたたかいラテ"],
+  "何もしたくない": ["やわらかいパジャマ", "お気に入りのクッション", "甘いおやつ", "大きめマグカップ"],
+  "ちょっと特別な気分": ["きらっと光るピアス", "小さな花束", "シャンパンカラーの小物", "特別な香り"]
+};
+
 const results = [
   {
     id: 1,
@@ -380,14 +393,17 @@ const screens = {
   result: document.querySelector("#result-screen")
 };
 
+const homeDate = document.querySelector("#home-date");
 const moodList = document.querySelector("#mood-list");
 const cover = document.querySelector("#cover");
+const resultDate = document.querySelector("#result-date");
 const resultSubtitle = document.querySelector("#result-subtitle");
 const resultTitle = document.querySelector("#result-title");
 const resultCatchphrase = document.querySelector("#result-catchphrase");
 const resultFeatureTitle = document.querySelector("#result-feature-title");
 const resultBody = document.querySelector("#result-body");
 const resultColors = document.querySelector("#result-colors");
+const resultLuckyItem = document.querySelector("#result-lucky-item");
 const resultPraise = document.querySelector("#result-praise");
 
 document.querySelector("#start-button").addEventListener("click", () => {
@@ -403,6 +419,14 @@ function showScreen(screenName) {
     screen.hidden = name !== screenName;
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function formatToday() {
+  return new Intl.DateTimeFormat("ja-JP", {
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  }).format(new Date());
 }
 
 function buildMoodButtons() {
@@ -423,20 +447,25 @@ function buildMoodButtons() {
 function showResult(mood) {
   const candidates = results.filter((result) => result.categories.includes(mood));
   const selected = candidates[Math.floor(Math.random() * candidates.length)];
+  const luckyItems = luckyItemsByMood[mood] || ["お気に入りの小物"];
+  const luckyItem = luckyItems[Math.floor(Math.random() * luckyItems.length)];
 
-  renderResult(selected);
+  renderResult(selected, luckyItem);
   showScreen("result");
 }
 
-function renderResult(result) {
+function renderResult(result, luckyItem) {
   cover.className = `cover ${result.themeClass}`;
+  resultDate.textContent = formatToday();
   resultSubtitle.textContent = result.subtitle;
   resultTitle.textContent = result.title;
   resultCatchphrase.textContent = result.catchphrase;
   resultFeatureTitle.textContent = result.featureTitle;
   resultBody.textContent = result.body;
   resultColors.textContent = result.colors;
+  resultLuckyItem.textContent = luckyItem;
   resultPraise.textContent = result.praise;
 }
 
+homeDate.textContent = formatToday();
 buildMoodButtons();
